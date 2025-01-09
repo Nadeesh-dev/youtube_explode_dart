@@ -111,14 +111,21 @@ class PlayerResponse {
 
   ///
   late final List<StreamInfoProvider> adaptiveStreams = root
-          .getJson<List<dynamic>>('streamingData/adaptiveFormats')
-          ?.map((e) => _StreamInfo(e as JsonMap, StreamSource.adaptive))
-          .toList() ??
+.getJson<List<dynamic>>('streamingData/adaptiveFormats')
+          ?.map((e) => (e as JsonMap)
+                  .getJson<String>('mimeType')
+                  ?.contains('audio') ==
+                  true
+              ? _StreamInfo(e, StreamSource.adaptive)
+              : null)
+          .whereType<StreamInfoProvider>()      
+	  .toList() ??
       const [];
 
   ///
   late final List<StreamInfoProvider> streams = [
-    ...muxedStreams,
+    // ignore muxed streams for now
+    //...muxedStreams,
     ...adaptiveStreams,
   ];
 
