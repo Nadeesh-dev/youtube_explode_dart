@@ -473,7 +473,8 @@ final clients = ytClients ?? [YoutubeApiClient.androidSdkless];
             stream.fragments ?? const [],
             stream.codec,
             stream.audioTrack,
-            stream.loudnessDb ?? 0.0);
+            stream.loudnessDb ?? 0.0,
+            stream.duration);
       } else {
         throw YoutubeExplodeException('Could not extract stream codec');
       }
