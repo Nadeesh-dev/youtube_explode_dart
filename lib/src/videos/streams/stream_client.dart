@@ -113,7 +113,7 @@ final clients = ytClients ?? [YoutubeApiClient.androidSdkless];
           }
 
           uniqueStreams.addAll(streams);
-        });
+        }, youtubeApiClient: client);
         if (uniqueStreams.isNotEmpty) {
           break;
         }
