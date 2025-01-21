@@ -61,10 +61,9 @@ class StreamClient {
           'Use the ytClient parameter instead passing the proper [YoutubeApiClient]s')
       bool fullManifest = false,
       List<YoutubeApiClient>? ytClients,
-      bool requireWatchPage = true}) async {
+bool requireWatchPage = true}) async {
     assert(ytClients == null || ytClients.isNotEmpty,
         'ytClients cannot be an empty list');
-
     videoId = VideoId.fromString(videoId);
 final clients = ytClients ?? [YoutubeApiClient.androidSdkless];
 
