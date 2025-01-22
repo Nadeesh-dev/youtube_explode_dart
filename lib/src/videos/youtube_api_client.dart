@@ -33,7 +33,7 @@ class YoutubeApiClient {
         'osVersion': '18.1.0.22B83',
         'timeZone': 'UTC',
 'gl': 'US',
-        'utcOffsetMinutes': 0
+'utcOffsetMinutes': 0
       }
     },
   }, 'https://www.youtube.com/youtubei/v1/player?key=AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc&prettyPrint=false');
@@ -107,8 +107,6 @@ class YoutubeApiClient {
         'osVersion': '12L',
         'osName': 'Android',
         'androidSdkVersion': '32',
-        'visitorData':
-            "CgszLU1GZjNndTFzSSiowb-8BjIKCgJJThIEGgAgMToKIJyn0M-llfjHZw%3D%3D",
         'userAgent':
             'com.google.android.apps.youtube.vr.oculus/1.60.19 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip',
         'hl': 'en',

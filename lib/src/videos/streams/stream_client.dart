@@ -10,6 +10,8 @@ import '../../reverse_engineering/challenges/js_challenge.dart';
 import '../../reverse_engineering/heuristics.dart';
 import '../../reverse_engineering/models/stream_info_provider.dart';
 import '../../reverse_engineering/pages/watch_page.dart';
+import '../../reverse_engineering/player/player_source_dart.dart'
+    if (dart.library.ui) '../../reverse_engineering/player/player_source_flutter.dart';
 import '../../reverse_engineering/youtube_http_client.dart';
 import '../video_id.dart';
 import '../youtube_api_client.dart';
@@ -66,7 +68,6 @@ bool requireWatchPage = true}) async {
         'ytClients cannot be an empty list');
     videoId = VideoId.fromString(videoId);
 final clients = ytClients ?? [YoutubeApiClient.androidSdkless];
-
     if (_jsChallengeSolver != null && ytClients == null) {
       clients.add(YoutubeApiClient.safari);
     }
@@ -160,7 +161,7 @@ final clients = ytClients ?? [YoutubeApiClient.androidSdkless];
     if (!playerResponse.isVideoPlayable) {
       throw VideoUnplayableException.unplayable(
         videoId,
-        reason: playerResponse.videoPlayabilityError ?? '',
+        reason: playerResponse.videoPlayabilityError,
       );
     }
 
@@ -208,6 +209,7 @@ final clients = ytClients ?? [YoutubeApiClient.androidSdkless];
     }
 
     if (!playerResponse.isVideoPlayable) {
+      await getVisitorData(generateNew: true);
       throw VideoUnplayableException.unplayable(
         videoId,
         reason: playerResponse.videoPlayabilityError ?? '',
