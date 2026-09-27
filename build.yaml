@@ -2,6 +2,9 @@
 # To update generated code, run `pub run build_runner build`
 targets:
   $default:
+    sources:
+      exclude:
+        - bin/**
     builders:
       # The end-user of a builder which applies "source_gen|combining_builder"
       # may configure the builder to ignore specific lints for their project
