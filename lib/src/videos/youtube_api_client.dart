@@ -16,6 +16,31 @@ class YoutubeApiClient {
         'headers': headers,
       };
 
+  /// visionOS client, the default in yt-dlp. Doesn't need a JS player.
+  static final visionos = YoutubeApiClient({
+    'context': {
+      'client': {
+        'clientName': 'VISIONOS',
+        'clientVersion': '1.02',
+        'deviceMake': 'Apple',
+        'deviceModel': 'RealityDevice17,1',
+        'userAgent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 15_7_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15',
+        'osName': 'visionOS',
+        'osVersion': '26.5.23O471',
+        'hl': 'en',
+        'gl': 'US',
+        'timeZone': 'UTC',
+        'utcOffsetMinutes': 0
+      }
+    },
+  }, 'https://www.youtube.com/youtubei/v1/player?key=AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc&prettyPrint=false',
+      headers: {
+        'User-Agent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 15_7_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15',
+        'X-YouTube-Client-Name': '101',
+        'X-YouTube-Client-Version': '1.02',
+      });
   // from https://github.com/yt-dlp/yt-dlp/blob/7794374de8afb20499b023107e2abfd4e6b93ee4/yt_dlp/extractor/youtube/_base.py#L136
   /// Has limited streams but doesn't require signature deciphering.
   static final ios = YoutubeApiClient({
